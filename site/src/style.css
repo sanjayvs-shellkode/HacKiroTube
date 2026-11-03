@@ -33,7 +33,7 @@ kbd {
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 1rem; top: 1rem; background: var(--violet); color: var(--bg); padding: 0.5rem; z-index: 3; }
 
-/* Header with a moonlit sky: moon, bats and the KiroTube ghost */
+/* Header with a moonlit sky: moon, bats and the HacKiroTube ghost */
 header {
   position: relative; overflow: hidden;
   display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center;

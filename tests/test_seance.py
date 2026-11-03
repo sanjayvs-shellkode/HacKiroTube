@@ -21,7 +21,7 @@ def call(name, **args):
 class Seance(unittest.TestCase):
     def test_handshake_and_listing(self):
         self.assertEqual(handle(CAT, {"id": 1, "method": "initialize", "params": {}})["result"]["serverInfo"]["name"],
-                         "kirotube-seance")
+                         "hackirotube-seance")
         self.assertIsNone(handle(CAT, {"method": "notifications/initialized"}))
         self.assertEqual(len(handle(CAT, {"id": 2, "method": "tools/list"})["result"]["tools"]), 3)
 

@@ -1,7 +1,7 @@
 # Requirements: Census
 
 ## User story
-As the KiroTube pipeline, I want the popular videos and their live/dead status before any LLM call,
+As the HacKiroTube pipeline, I want the popular videos and their live/dead status before any LLM call,
 so the Exorcist sees real titles and only spends tokens on videos several people recommended.
 
 ## Acceptance criteria (EARS)

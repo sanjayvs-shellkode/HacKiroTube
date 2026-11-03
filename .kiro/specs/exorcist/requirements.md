@@ -1,7 +1,7 @@
 # Requirements: Exorcist
 
 ## User story
-As a KiroTube visitor, I want only videos people genuinely recommend, each in a crypt with a one-line reason,
+As a HacKiroTube visitor, I want only videos people genuinely recommend, each in a crypt with a one-line reason,
 without the project burning HackerTube-scale tokens to get there.
 
 ## Acceptance criteria (EARS)
