@@ -6,4 +6,4 @@ __pycache__/
 !.env.example
 node_modules/
 dist/
-site/public/catalog.json
+
