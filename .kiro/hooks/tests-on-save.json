@@ -1,0 +1,12 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "unittest-after-write",
+      "trigger": "PostToolUse",
+      "matcher": "fs_write",
+      "action": { "type": "command", "command": "python -m unittest discover -s tests -q" },
+      "timeout_ms": 60000
+    }
+  ]
+}

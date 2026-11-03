@@ -16,6 +16,21 @@ cd site && npm install && npm run build   # -> site/dist/ (static, host anywhere
 python -m unittest discover -s tests
 ```
 
+## Seance (MCP server)
+
+`pipeline/seance.py` is a stdlib MCP server over stdio that reads `site/public/catalog.json`.
+Tools: `search_videos` (words, crypt, immortals only), `list_crypts`, `visit_graveyard` (resurrected / archived / lost).
+Register it in `.kiro/settings/mcp.json`:
+
+```json
+{ "mcpServers": { "kirotube-seance": { "command": "python", "args": ["pipeline/seance.py"],
+  "autoApprove": ["search_videos", "list_crypts", "visit_graveyard"] } } }
+```
+
+## Hooks
+
+`.kiro/hooks/tests-on-save.json` runs the unit tests after every file write by the agent.
+
 ## Numbers so far (harvest, 2026-11-02)
 
 | Stage | Count |
