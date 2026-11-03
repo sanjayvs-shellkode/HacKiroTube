@@ -1,0 +1,156 @@
+/* Kiro's violet (from the Kiro IDE dark theme) on a Kiroween night. */
+:root {
+  --bg: #19161d;
+  --panel: #211d25;
+  --raised: #28242e;
+  --line: #3a3442;
+  --text: #f3eefb;
+  --muted: #a9a3b5;
+  --violet: #b080ff;
+  --violet-deep: #7138cc;
+  --lavender: #e2d3fe;
+  --ghost: #80ffb5;
+  --pumpkin: #ff9a4d;
+  --focus: #e2d3fe;
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgb(113 56 204 / 0.35), transparent 70%),
+    radial-gradient(40rem 25rem at -10% 110%, rgb(128 255 181 / 0.06), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+a { color: var(--ghost); }
+a:hover { color: var(--lavender); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+kbd {
+  font: 0.75em ui-monospace, monospace; padding: 0 0.35em;
+  border: 1px solid var(--line); border-radius: 4px; color: var(--muted);
+}
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--violet); color: var(--bg); padding: 0.5rem; z-index: 3; }
+
+/* Header with a moonlit sky: moon, bats and the KiroTube ghost */
+header {
+  position: relative; overflow: hidden;
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center;
+  padding: 1.5rem 1.5rem 1.25rem; border-bottom: 1px solid var(--line);
+}
+.sky { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+header > :not(.sky) { position: relative; z-index: 1; }
+.moon { position: absolute; width: 5.5rem; right: 18%; top: -1.6rem; opacity: 0.9; filter: drop-shadow(0 0 1.5rem rgb(226 211 254 / 0.45)); }
+.bat { position: absolute; width: 2.4rem; }
+.b1 { right: 30%; top: 0.6rem; }
+.b2 { right: 12%; top: 2.8rem; width: 1.7rem; }
+.b3 { right: 40%; top: 3.4rem; width: 1.3rem; }
+.mascot { position: absolute; width: 3.2rem; left: 0.9rem; top: 0.9rem; opacity: 0.95; }
+.brand { padding-left: 3.6rem; }
+h1 { margin: 0; font-size: 1.9rem; letter-spacing: 0.02em; }
+h1 span { color: var(--violet); }
+.brand p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+nav { display: flex; gap: 0.25rem; }
+nav a { color: var(--text); text-decoration: none; padding: 0.4rem 0.8rem; border-radius: 6px; }
+nav a:hover { background: var(--raised); color: var(--text); }
+nav a[aria-current="page"] { background: var(--violet-deep); color: #fff; }
+nav a[aria-current="page"] kbd { color: #fff; border-color: #fff8; }
+nav a span { opacity: 0.8; font-size: 0.85em; }
+.tools { display: flex; gap: 0.5rem; margin-left: auto; flex-wrap: wrap; }
+input, button {
+  font: inherit; color: var(--text); background: var(--raised);
+  border: 1px solid var(--line); border-radius: 6px; padding: 0.4rem 0.7rem;
+}
+input { min-width: 16rem; }
+input::placeholder { color: var(--muted); }
+button { cursor: pointer; }
+button:hover { border-color: var(--violet); }
+
+.layout { display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem; padding: 1.5rem; }
+aside[hidden] + main { grid-column: 1 / -1; }
+aside h2 { margin: 0 0 0.5rem; font-size: 1rem; color: var(--violet); }
+aside ul { list-style: none; margin: 0; padding: 0; }
+aside a {
+  display: flex; justify-content: space-between; gap: 0.5rem;
+  padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text); text-decoration: none;
+}
+aside a:hover { background: var(--raised); color: var(--text); }
+aside a span { color: var(--muted); }
+aside a[aria-current="page"] { background: var(--raised); color: var(--violet); box-shadow: inset 3px 0 var(--violet); }
+#status { margin: 0 0 1rem; color: var(--muted); }
+
+#list { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; }
+.card {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem;
+  transition: border-color 0.15s, opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.card:hover, .card:focus-within, .card:focus {
+  border-color: var(--violet); box-shadow: 0 0 1.25rem rgb(176 128 255 / 0.18);
+}
+.card.seen { opacity: 0.55; }
+.thumb img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; background: var(--line); }
+.card h3 { margin: 0; font-size: 1rem; line-height: 1.3; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { color: var(--ghost); text-decoration: underline; }
+.meta { margin: 0; color: var(--muted); font-size: 0.85rem; }
+.why { margin: 0; flex: 1; font-size: 0.9rem; }
+.badge {
+  display: inline-block; margin-left: 0.25rem; padding: 0 0.4rem; border-radius: 4px;
+  background: var(--pumpkin); color: #19161d; font-weight: 600; font-size: 0.75rem;
+}
+.watch { align-self: flex-start; font-size: 0.85rem; }
+.watch[aria-pressed="true"] { border-color: var(--ghost); color: var(--ghost); }
+
+/* Tombstones: the drawing follows the status (ghost rising = re-upload found, cracked = lost). */
+#list.graveyard { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.grave { text-align: center; align-items: center; }
+.stone-art { width: 5rem; height: auto; overflow: visible; }
+.grave.resurrected { border-color: rgb(128 255 181 / 0.5); }
+.grave.lost { border-style: dashed; }
+.grave blockquote { margin: 0; font-style: italic; font-size: 0.85rem; color: var(--muted); }
+.grave .links { list-style: none; margin: 0.25rem 0 0; padding: 0; font-size: 0.85rem; display: grid; gap: 0.2rem; }
+
+.empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem 1rem; }
+.lonely { width: 5rem; opacity: 0.8; }
+
+#more {
+  display: block; margin: 1.5rem auto; padding: 0.6rem 1.5rem;
+  background: var(--violet-deep); border-color: var(--violet-deep); color: #fff;
+}
+#more:hover { background: var(--violet); color: var(--bg); }
+dialog {
+  background: var(--panel); color: var(--text); border: 1px solid var(--violet);
+  border-radius: 10px; padding: 1.5rem; max-width: 28rem;
+}
+dialog::backdrop { background: rgb(10 6 16 / 0.75); }
+dialog h2 { margin-top: 0; color: var(--violet); }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 0.4rem 1rem; }
+dd { margin: 0; }
+footer { padding: 1rem 1.5rem 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
+
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+  input { min-width: 0; flex: 1; }
+  .moon { right: 4%; }
+  .b1, .b3 { display: none; }
+}
+
+/* Motion only for people who have not asked for less of it. */
+@media (prefers-reduced-motion: no-preference) {
+  .mascot, .lonely { animation: float 4s ease-in-out infinite; }
+  .bat { animation: flap 0.5s ease-in-out infinite alternate, drift 9s ease-in-out infinite alternate; }
+  .b2 { animation-delay: -0.2s, -3s; }
+  .b3 { animation-delay: -0.35s, -6s; }
+  .grave:hover .rising, .grave:focus-within .rising { animation: rise 1.6s ease-in-out infinite alternate; }
+  .card:hover { transform: translateY(-2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+@keyframes float { 50% { transform: translateY(-6px); } }
+@keyframes flap { to { transform: scaleY(0.6); } }
+@keyframes drift { to { translate: -2.5rem 0.6rem; } }
+@keyframes rise { to { transform: translateY(-5px); } }

@@ -1,0 +1,9 @@
+data/
+__pycache__/
+*.tmp
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+site/public/catalog.json
