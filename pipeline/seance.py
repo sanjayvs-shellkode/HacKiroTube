@@ -1,4 +1,4 @@
-"""Seance: an MCP server (stdio, JSON-RPC 2.0) that lets Kiro query the KiroTube catalog.
+"""Seance: an MCP server (stdio, JSON-RPC 2.0) that lets Kiro query the HacKiroTube catalog.
 
 Usage: python pipeline/seance.py [--catalog site/public/catalog.json]
 Reads the file publish.py writes; rerun publish to refresh what the spirits know.
@@ -63,7 +63,7 @@ def handle(cat, msg):
         return None
     if method == "initialize":
         result = {"protocolVersion": msg.get("params", {}).get("protocolVersion", PROTOCOL),
-                  "capabilities": {"tools": {}}, "serverInfo": {"name": "kirotube-seance", "version": "0.1.0"}}
+                  "capabilities": {"tools": {}}, "serverInfo": {"name": "hackirotube-seance", "version": "0.1.0"}}
     elif method == "ping":
         result = {}
     elif method == "tools/list":

@@ -1,8 +1,11 @@
-# KiroTube
+# HacKiroTube
 
 A haunted archive of the videos Hacker News has recommended since 2007, inspired by
-[HackerTube](https://www.tokenpost.com/news/technology/45979). KiroTube also finds the
+[HackerTube](https://www.tokenpost.com/news/technology/45979). HacKiroTube also finds the
 recommended videos that have died and tries to resurrect them.
+
+The idea is Andrej Karpathy's HackerTube; this is an independent rebuild, made for fun for the Kiroween 2026
+contest. The name is **Hac**ker News + **Kiro** + Hacker**Tube**.
 
 ## Pipeline
 
@@ -23,7 +26,7 @@ Tools: `search_videos` (words, crypt, immortals only), `list_crypts`, `visit_gra
 Register it in `.kiro/settings/mcp.json`:
 
 ```json
-{ "mcpServers": { "kirotube-seance": { "command": "python", "args": ["pipeline/seance.py"],
+{ "mcpServers": { "hackirotube-seance": { "command": "python", "args": ["pipeline/seance.py"],
   "autoApprove": ["search_videos", "list_crypts", "visit_graveyard"] } } }
 ```
 

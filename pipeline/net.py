@@ -21,7 +21,7 @@ def request_json(url, data=None, headers=None, attempts=6, text=False):
     """GET, or POST when data is given; text=True returns the body as str (HTML pages).
     Secrets go in headers, so error text (URL without query) never leaks them."""
     body = None if data is None else json.dumps(data).encode()
-    hdrs = {"User-Agent": "KiroTube", "Content-Type": "application/json", **(headers or {})}
+    hdrs = {"User-Agent": "HacKiroTube", "Content-Type": "application/json", **(headers or {})}
     req = urllib.request.Request(url, data=body, headers=hdrs)
     where = url.split("?")[0]
     for i in range(attempts):

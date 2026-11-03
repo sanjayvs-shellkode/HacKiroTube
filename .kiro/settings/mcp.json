@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "kirotube-seance": {
+    "hackirotube-seance": {
       "command": "python",
       "args": ["pipeline/seance.py"],
       "autoApprove": ["search_videos", "list_crypts", "visit_graveyard"]

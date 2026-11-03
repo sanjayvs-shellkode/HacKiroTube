@@ -14,7 +14,7 @@ type Grave = {
 type View = "crypts" | "immortals" | "graveyard";
 
 const PAGE = 60;
-const WATCHED_KEY = "kirotube.watched";
+const WATCHED_KEY = "hackirotube.watched";
 const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
 
 let videos: Video[] = [];
@@ -122,7 +122,7 @@ function toggleWatched(card: HTMLElement) {
 function exportView() {
   const blob = new Blob([JSON.stringify(current(), null, 1)], { type: "application/json" });
   const a = Object.assign(document.createElement("a"), {
-    href: URL.createObjectURL(blob), download: `kirotube-${crypt ?? view}.json`.replace(/[^\w.-]+/g, "-"),
+    href: URL.createObjectURL(blob), download: `hackirotube-${crypt ?? view}.json`.replace(/[^\w.-]+/g, "-"),
   });
   a.click();
   URL.revokeObjectURL(a.href);

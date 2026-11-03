@@ -1,7 +1,7 @@
 # Requirements: Harvester
 
 ## User story
-As the KiroTube pipeline, I want every HN comment that links a YouTube video, so later stages
+As the HacKiroTube pipeline, I want every HN comment that links a YouTube video, so later stages
 can classify and verify them without spending LLM tokens on comments with no video link.
 
 ## Acceptance criteria (EARS)

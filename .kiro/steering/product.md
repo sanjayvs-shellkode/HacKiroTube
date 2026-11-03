@@ -1,6 +1,6 @@
-# Product: KiroTube
+# Product: HacKiroTube
 
-KiroTube is a haunted archive of the videos Hacker News has recommended since 2007.
+HacKiroTube is a haunted archive of the videos Hacker News has recommended since 2007.
 It is inspired by Karpathy's HackerTube and adds one thing HackerTube does not do:
 it finds recommended videos that have since died (deleted, private, taken down) and
 tries to resurrect them (archived copy, re-upload, recovered context).

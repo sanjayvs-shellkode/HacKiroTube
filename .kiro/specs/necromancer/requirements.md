@@ -1,7 +1,7 @@
 # Requirements: Necromancer
 
 ## User story
-As a KiroTube visitor, I want a tombstone for every recommended video that died, with its name and
+As a HacKiroTube visitor, I want a tombstone for every recommended video that died, with its name and
 any copy that survived, so the community's lost recommendations are not simply gone.
 
 ## Acceptance criteria (EARS)
