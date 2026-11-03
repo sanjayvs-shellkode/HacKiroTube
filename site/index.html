@@ -19,6 +19,7 @@
       <a href="#/" data-view="crypts">Crypts <kbd>1</kbd></a>
       <a href="#/immortals" data-view="immortals">Immortals <kbd>2</kbd></a>
       <a href="#/graveyard" data-view="graveyard">Graveyard <kbd>3</kbd></a>
+      <a href="#/origin" data-view="origin">Origin <kbd>4</kbd></a>
     </nav>
     <div class="tools">
       <label class="visually-hidden" for="q">Search titles</label>
@@ -33,6 +34,47 @@
       <p id="status" role="status" aria-live="polite"></p>
       <div id="list"></div>
       <button id="more" type="button" hidden>Summon more</button>
+      <article id="origin" class="origin" hidden aria-labelledby="origin-title">
+        <h2 id="origin-title">Origin story</h2>
+        <p class="lede">HacKiroTube is a catalog of the YouTube videos Hacker News keeps telling people to watch,
+          plus a graveyard for the ones that have since died, and an attempt to bring them back.</p>
+
+        <h3>Where the idea came from</h3>
+        <p>The idea is Andrej Karpathy's. He built <strong>HackerTube</strong>: an LLM read tens of thousands of HN comments
+          and listed the videos the community recommends. I read about it in the news
+          (<a href="https://www.tokenpost.com/news/technology/45979" rel="noopener">TokenPost</a>) and rebuilt my own version
+          from scratch, for fun, for the Kiroween 2026 Halloween contest. All credit for the concept goes to him.</p>
+        <p>The name is <strong>Hac</strong>ker News + <strong>Kiro</strong> + Hacker<strong>Tube</strong>.</p>
+
+        <h3>What's new here</h3>
+        <p>Click enough old HN links and you hit "Video unavailable". Twenty years of link rot took talks people still cite.
+          So HacKiroTube also counts the dead:</p>
+        <ul>
+          <li><strong>Graveyard.</strong> <span data-stat="dead">791</span> recommended videos are deleted or private.
+            For each one the Necromancer finds a Wayback Machine snapshot from when HN first linked it, recovers the title,
+            and searches for a re-upload. So far it has dug up <span data-stat="graves">…</span> tombstones:
+            <span data-stat="resurrected">…</span> possibly resurrected, <span data-stat="archived">…</span> archived,
+            <span data-stat="lost">…</span> lost. A ghost rises only where a re-upload was found; a cracked stone means it's gone.</li>
+          <li><strong>Immortals.</strong> <span data-stat="immortals">…</span> videos recommended by 5 or more people across 10 or more years.</li>
+          <li><strong>Séance.</strong> An MCP server, so you can ask Kiro for "a classic talk on distributed systems" and get the catalog back.</li>
+        </ul>
+
+        <h3>How it was made</h3>
+        <ol>
+          <li><strong>Harvester:</strong> 283,173 HN comments with YouTube links, 189,162 unique videos.</li>
+          <li><strong>Census:</strong> keeps videos at least 3 different people recommended, then asks YouTube which are still alive.</li>
+          <li><strong>Exorcist:</strong> the only LLM step. A small model sorts <span data-stat="videos">…</span> living videos
+            into crypts and writes why people recommend each one.</li>
+          <li><strong>Necromancer:</strong> archive.org and YouTube search, no LLM.</li>
+        </ol>
+        <p>Cheap before smart: everything regex and API checks can remove goes before the LLM sees it. HackerTube used 504M input tokens;
+          this used about 2.5M for twice the videos. Built in Kiro with specs, steering, a test hook and the Séance.</p>
+
+        <h3>The rules of the house</h3>
+        <p>No accounts, no backend, no hosted video. Links and embeds only; the dead point to the Internet Archive.
+          Watched marks stay in your browser. The code is on
+          <a href="https://github.com/sanjayvs-shellkode/kiroween-hackathon-project" rel="noopener">GitHub</a> under the MIT licence.</p>
+      </article>
     </main>
   </div>
   <dialog id="help" aria-labelledby="help-title">
@@ -42,7 +84,7 @@
       <dt><kbd>o</kbd> or <kbd>Enter</kbd></dt><dd>Open the focused video</dd>
       <dt><kbd>w</kbd></dt><dd>Mark watched (kept in this browser only)</dd>
       <dt><kbd>/</kbd></dt><dd>Search</dd>
-      <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Crypts, Immortals, Graveyard</dd>
+      <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd></dt><dd>Crypts, Immortals, Graveyard, Origin</dd>
       <dt><kbd>x</kbd></dt><dd>Export this view as JSON</dd>
       <dt><kbd>Esc</kbd></dt><dd>Close this, or leave the search box</dd>
     </dl>

@@ -11,7 +11,7 @@ type Grave = {
   status: "resurrected" | "archived" | "lost"; archive: string; reupload: Hit | null;
   epitaph: string; comment: string;
 };
-type View = "crypts" | "immortals" | "graveyard";
+type View = "crypts" | "immortals" | "graveyard" | "origin";
 
 const PAGE = 60;
 const WATCHED_KEY = "hackirotube.watched";
@@ -83,6 +83,15 @@ function renderCrypts() {
 }
 
 function render() {
+  const origin = view === "origin";
+  $("#origin").hidden = !origin;
+  $("#status").hidden = $("#list").hidden = origin;
+  if (origin) {
+    $("#more").hidden = true;
+    markNav();
+    renderCrypts();
+    return;
+  }
   const items = current();
   const list = $("#list");
   list.className = view === "graveyard" ? "graveyard" : "";
@@ -94,14 +103,18 @@ function render() {
   $("#status").textContent = items.length
     ? `${items.length.toLocaleString()} ${label}${query ? ` matching “${query}”` : ""}`
     : "Nothing stirs here.";
+  markNav();
+  renderCrypts();
+}
+
+function markNav() {
   document.querySelectorAll<HTMLAnchorElement>("nav a").forEach((a) =>
     a.dataset.view === view ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
-  renderCrypts();
 }
 
 function route() {
   const [, kind, arg] = location.hash.split("/");
-  view = kind === "immortals" ? "immortals" : kind === "graveyard" ? "graveyard" : "crypts";
+  view = kind === "immortals" || kind === "graveyard" || kind === "origin" ? kind : "crypts";
   crypt = kind === "crypt" && arg ? decodeURIComponent(arg) : null;
   shown = PAGE;
   render();
@@ -151,7 +164,7 @@ document.addEventListener("keydown", (e) => {
     Enter: () => document.activeElement === card && card?.querySelector<HTMLAnchorElement>("a.open")?.click(),
     w: () => card && toggleWatched(card),
     "/": () => $("#q").focus(),
-    "1": () => (location.hash = "#/"), "2": () => (location.hash = "#/immortals"), "3": () => (location.hash = "#/graveyard"),
+    "1": () => (location.hash = "#/"), "2": () => (location.hash = "#/immortals"), "3": () => (location.hash = "#/graveyard"), "4": () => (location.hash = "#/origin"),
     x: exportView, "?": () => help.showModal(),
   };
   if (keys[e.key]) {
@@ -185,6 +198,15 @@ fetch(`${import.meta.env.BASE_URL}catalog.json`)
     videos = data.videos.sort((a, b) => b.n - a.n);
     graves = data.graves.sort((a, b) => b.n - a.n);
     document.querySelector('nav a[data-view="graveyard"]')!.insertAdjacentHTML("beforeend", ` <span>${graves.length}</span>`);
+    const status = (s: Grave["status"]) => graves.filter((g) => g.status === s).length;
+    const stats: Record<string, number> = {
+      videos: videos.length, immortals: videos.filter((v) => v.immortal).length, graves: graves.length,
+      resurrected: status("resurrected"), archived: status("archived"), lost: status("lost"),
+    };
+    document.querySelectorAll<HTMLElement>("#origin [data-stat]").forEach((el) => {
+      const n = stats[el.dataset.stat!];
+      if (n !== undefined) el.textContent = n.toLocaleString();
+    });
     route();
   })
   .catch((err) => ($("#status").textContent = `The catalog would not rise: ${err.message}. Run pipeline/publish.py.`));
