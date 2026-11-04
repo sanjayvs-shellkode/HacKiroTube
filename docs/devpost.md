@@ -10,16 +10,15 @@ Karpathy's HackerTube, rebuilt with Kiro for Halloween: the videos Hacker News r
 
 HacKiroTube = **Hac**ker News + **Kiro** + Hacker**Tube**. Every part of the name comes from where the project came from.
 
-## Credit
+## Origin
 
-The idea is Andrej Karpathy's, not mine. He built HackerTube, a catalog of the YouTube videos Hacker News users recommend,
-and I read about it in the news ([TokenPost](https://www.tokenpost.com/news/technology/45979)). I took that idea and
-built my own version from scratch, for fun, for the Kiroween 2026 Halloween contest. All credit for the original concept
-goes to him. The Halloween part (finding the dead videos and trying to resurrect them) is what I added.
+HacKiroTube builds on Andrej Karpathy's **HackerTube**, a catalog of the YouTube videos Hacker News users recommend, which I
+read about in the news ([TokenPost](https://www.tokenpost.com/news/technology/45979)). I rebuilt it from scratch for fun for
+Kiroween 2026 and added the Halloween part: finding the recommended videos that have died and trying to bring them back.
 
 ## Inspiration
 
-Reading about Karpathy's HackerTube, where an LLM read about 40k HN comments and listed the 6,454 videos the community recommends,
+HackerTube had an LLM read about 40k HN comments and list the 6,454 videos the community recommends.
 I wondered what happened to the old ones. Twenty years of link rot must have taken talks people still cite.
 Kiroween's Resurrection theme made it obvious: HackerTube shows what HN loves, and HacKiroTube also counts what HN lost
 and tries to bring it back.
