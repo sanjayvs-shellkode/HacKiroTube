@@ -51,7 +51,7 @@ HacKiroTube covers about twice as many videos with 2.5M input tokens, about 0.5%
 - **Steering:** `product.md` (scope and non-goals), `tech.md` (stdlib only, the file-based stage contract, token tracking) and `theme.md` (palette, vocabulary, and the rule that state-carrying art must match the data).
 - **Hooks:** `.kiro/hooks/tests-on-save.json` runs the unit test suite after every agent file write.
 - **MCP:** the Séance (`pipeline/seance.py`), a stdlib MCP server with `search_videos`, `list_crypts` and `visit_graveyard`.
-- **Kiro Crew:** ran the long Exorcist and Necromancer jobs as background processes while the site was built in parallel. <!-- add the daily cron job here if we set it up -->
+- **Kiro Crew:** ran the long Exorcist and Necromancer jobs as background processes while the site was built in parallel. A daily scheduled Kiro Crew job resumes the Necromancer and republishes the catalog until every tombstone is searched.
 
 ## Challenges
 
